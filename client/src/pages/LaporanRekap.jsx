@@ -1,4 +1,3 @@
-// src/pages/LaporanRekap.jsx
 import React, { useState, useEffect } from 'react';
 import { 
   FileSpreadsheet, Calendar, DollarSign, Hash, 
@@ -29,7 +28,7 @@ const LaporanRekap = () => {
       const result = await getRekapTransaksi(filters.startDate, filters.endDate);
       setRekapData(result);
       
-      // Toast hanya akan muncul jika dipicu oleh klik tombol (isManual === true)
+      // Toast muncul jika klik tombol (isManual === true)
       if (isManual) {
         if (result.data.length === 0) {
           toast.error('Tidak ada transaksi di rentang tanggal ini');
@@ -38,7 +37,7 @@ const LaporanRekap = () => {
         }
       }
     } catch (error) {
-      // Error sistem tetap dimunculkan agar user tahu jika ada masalah server
+      // Error sistem ada masalah server
       toast.error(error.message);
     } finally {
       setIsLoading(false);

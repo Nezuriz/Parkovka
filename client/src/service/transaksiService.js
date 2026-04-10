@@ -1,4 +1,3 @@
-// src/service/transaksiService.js
 import api from './api.js';
 
 export const getTransaksis = async () => {

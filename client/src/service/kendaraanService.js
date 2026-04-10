@@ -1,4 +1,3 @@
-// src/service/kendaraanService.js
 import api from './api.js';
 
 export const getKendaraans = async () => {

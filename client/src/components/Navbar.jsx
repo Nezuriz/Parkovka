@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom'; // <-- Import Link di sini
@@ -75,7 +74,7 @@ const Navbar = () => {
             Contact Us
           </a>
           
-          {/* Ubah button Login (Desktop) menjadi Link */}
+          {/* button Login (Desktop) */}
           <Link 
             to="/login" 
             className="bg-parkovka-500 text-pure-white px-8 py-2.5 rounded-full hover:bg-parkovka-400 transition-colors font-semibold"
@@ -125,7 +124,7 @@ const Navbar = () => {
             Contact Us
           </a>
 
-          {/* Ubah button Login (Mobile) menjadi Link */}
+          {/*  button Login (Mobile) */}
           <Link 
             to="/login" 
             onClick={toggleMenu} 

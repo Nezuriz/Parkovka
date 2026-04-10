@@ -1,6 +1,5 @@
-// src/home/HeroSection.jsx
 import React from 'react';
-import { Link } from 'react-router-dom'; // <-- Import Link di sini
+import { Link } from 'react-router-dom'; 
 import heroIllustration from '../assets/hero-illustration.svg';
 
 const HeroSection = () => {
@@ -18,7 +17,7 @@ const HeroSection = () => {
             <p className="text-lg md:text-2xl text-pure-black font-medium">
               Your Space, Found Instantly.
             </p>
-            {/* Ubah button menjadi Link */}
+            {/* button Link */}
             <Link 
               to="/login" 
               className="bg-parkovka-300 text-pure-white text-center block text-xl md:text-2xl font-bold py-3 md:py-4 w-full max-w-[300px] lg:max-w-none rounded-full hover:bg-parkovka-400 transition-colors shadow-md"

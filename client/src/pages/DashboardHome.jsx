@@ -1,4 +1,3 @@
-// src/pages/DashBoardHome.jsx
 import React, { useState, useEffect } from 'react';
 import { Map, Car, ArrowRightLeft, FileText, Clock, LogIn, LogOut, Loader2 } from 'lucide-react';
 import { getAreas } from '../service/areaService';
@@ -10,7 +9,7 @@ const DashBoardHome = () => {
   const [transaksis, setTransaksis] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Ambil data user yang sedang login untuk ucapan selamat datang
+  // data user
   const currentUser = JSON.parse(localStorage.getItem('user')) || { nama_lengkap: 'Administrator' };
 
   const fetchData = async () => {
@@ -33,7 +32,7 @@ const DashBoardHome = () => {
     fetchData();
   }, []);
 
-  // --- LOGIKA FILTER HARI INI (RESET 00:00) ---
+  //  FILTER (RESET 00:00)
   const today = new Date();
   const isToday = (dateString) => {
     if (!dateString) return false;
@@ -43,16 +42,16 @@ const DashBoardHome = () => {
            date.getFullYear() === today.getFullYear();
   };
 
-  // --- MENGHITUNG STATISTIK ---
+  // statistik
   const statTotalArea = areas.length;
   const statKendaraanParkir = transaksis.filter(t => t.status === 'masuk').length;
   const statTransaksiHariIni = transaksis.filter(t => isToday(t.waktu_masuk) || isToday(t.waktu_keluar)).length;
   const statTotalTransaksi = transaksis.length;
 
-  // --- MEMBUAT LOG AKTIVITAS HARI INI ---
+  // Log
   let todayLogs = [];
   transaksis.forEach(trx => {
-    // Cek jika ada kendaraan masuk hari ini
+    // kendaraan masuk 
     if (isToday(trx.waktu_masuk)) {
       todayLogs.push({
         id: `masuk-${trx.id_parkir}`,
@@ -62,7 +61,7 @@ const DashBoardHome = () => {
         petugas: trx.user?.nama_lengkap || 'Petugas'
       });
     }
-    // Cek jika ada kendaraan keluar hari ini
+    // kendaraan keluar
     if (trx.status === 'keluar' && isToday(trx.waktu_keluar)) {
       todayLogs.push({
         id: `keluar-${trx.id_parkir}`,
@@ -74,10 +73,10 @@ const DashBoardHome = () => {
     }
   });
 
-  // Urutkan log dari yang paling baru (Descending)
+  // Urut log dari yang paling baru 
   todayLogs.sort((a, b) => b.waktu - a.waktu);
 
-  // Format Jam (Contoh: 14:30)
+  // Format Jam
   const formatJam = (date) => {
     return new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit' }).format(date);
   };
@@ -151,7 +150,7 @@ const DashBoardHome = () => {
         </div>
       </div>
 
-      {/* SECTION LOG AKTIVITAS HARI INI */}
+      {/* Section log aktivitas */}
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/30">
           <div>

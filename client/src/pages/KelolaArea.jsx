@@ -1,4 +1,3 @@
-// src/pages/KelolaArea.jsx
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, Map, Loader2, AlertTriangle } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -8,7 +7,7 @@ const KelolaArea = () => {
   const [areas, setAreas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // State untuk Modal Form (Tambah/Edit)
+  // State Modal Form (Tambah/Edit)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editId, setEditId] = useState(null);
@@ -20,7 +19,7 @@ const KelolaArea = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fungsi mengambil data dari database
+  // ambil data dari database
   const fetchAreas = async () => {
     setIsLoading(true);
     try {
@@ -37,14 +36,14 @@ const KelolaArea = () => {
     fetchAreas();
   }, []);
 
-  // Handler membuka modal tambah
+  // Handler modal tambah
   const handleOpenAdd = () => {
     setIsEditMode(false);
     setFormData({ nama_area: '', kapasitas: '' });
     setIsModalOpen(true);
   };
 
-  // Handler membuka modal edit
+  // Handler modal edit
   const handleOpenEdit = (area) => {
     setIsEditMode(true);
     setEditId(area.id_area);
@@ -81,9 +80,8 @@ const KelolaArea = () => {
     }
   };
 
-  // Handler Hapus Area Menggunakan Custom Toast (Bukan Default Browser)
+  // Handler Hapus Area
   const handleDelete = (id, namaArea) => {
-    // Memanggil custom UI di dalam React Hot Toast
     toast((t) => (
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
@@ -121,7 +119,7 @@ const KelolaArea = () => {
         </div>
       </div>
     ), { 
-      duration: Infinity, // Toast ini tidak akan hilang otomatis sampai user klik Batal/Ya
+      duration: Infinity,
       position: 'top-center'
     });
   };

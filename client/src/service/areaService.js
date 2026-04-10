@@ -1,4 +1,3 @@
-// src/service/areaService.js
 import api from './api.js';
 
 export const getAreas = async () => {

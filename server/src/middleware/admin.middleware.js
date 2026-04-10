@@ -27,7 +27,6 @@ export const verifyToken = (req, res, next) => {
   }
 };
 
-// fungsi dinamis buat cek role yg baru inieh
 export const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
     if (!req.user || !allowedRoles.includes(req.user.role)) {
@@ -40,6 +39,5 @@ export const authorizeRoles = (...allowedRoles) => {
   };
 };
 
-// ini fungsi biar routernya ga ribet, tinggal panggil isAdmin atau isPetugas aj
 export const isAdmin = authorizeRoles('admin');
 export const isPetugas = authorizeRoles('petugas');

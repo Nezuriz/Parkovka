@@ -1,4 +1,3 @@
-// src/service/userService.js
 import api from './api.js';
 
 export const getUsers = async () => {

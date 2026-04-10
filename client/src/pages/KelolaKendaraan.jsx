@@ -1,4 +1,3 @@
-// src/pages/KelolaKendaraan.jsx
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, Car, Loader2, AlertTriangle } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -233,7 +232,7 @@ const KelolaKendaraan = () => {
                   type="number"
                   required
                   min="0"
-                  step="500" // Supaya bisa naik/turun per kelipatan 500
+                  step="500"
                   placeholder="Misal: 5000"
                   value={formData.tarif_per_jam}
                   onChange={(e) => setFormData({...formData, tarif_per_jam: e.target.value})}

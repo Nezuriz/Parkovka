@@ -1,10 +1,6 @@
-// src/components/DashboardSidebar.jsx
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { 
-  LayoutDashboard, Users, Map, Car, ArrowRightLeft, FileText,
-  UserCircle, LogOut, X 
-} from 'lucide-react';
+import { LayoutDashboard, Users, Map, Car, ArrowRightLeft, FileText, UserCircle, LogOut, X } from 'lucide-react';
 import toast from 'react-hot-toast'; 
 import logo from '../assets/parkovka-logo.svg';
 import { logoutUser } from '../service/authService';
@@ -13,7 +9,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Ambil data user beserta role-nya dari localStorage
+  // data user localStorage
   const userData = JSON.parse(localStorage.getItem('user')) || {};
   const userRole = userData.role || 'admin'; // Default fallback ke admin
 
@@ -56,8 +52,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
     ), { duration: Infinity, position: 'top-center' });
   };
 
-  // --- SMART MENU LOGIC ---
-  // Tentukan menu mana saja yang boleh dilihat oleh masing-masing role
+  // access role 
   const allMenus = [
     { name: 'Dashboard', path: '/dashboard', icon: <LayoutDashboard size={20} />, roles: ['admin', 'petugas', 'owner'] },
     { name: 'Kelola User', path: '/dashboard/users', icon: <Users size={20} />, roles: ['admin'] },
@@ -67,7 +62,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
     { name: 'Laporan Rekap', path: '/dashboard/laporan', icon: <FileText size={20} />, roles: ['owner'] }, // Hanya Owner
   ];
 
-  // Filter menu berdasarkan role user yang sedang login
+  // Filter role user 
   const permittedMenus = allMenus.filter(menu => menu.roles.includes(userRole));
 
   return (
@@ -103,7 +98,7 @@ const DashboardSidebar = ({ isOpen, setIsOpen }) => {
             Menu {userRole}
           </p>
           
-          {/* Render menu yang sudah difilter */}
+          {/* Render menu filter */}
           {permittedMenus.map((item) => {
             const isActive = item.path === '/dashboard' 
               ? location.pathname === '/dashboard' 
