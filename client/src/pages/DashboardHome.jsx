@@ -96,7 +96,7 @@ const DashBoardHome = () => {
       {/* HEADER WELCOME */}
       <div>
         <h1 className="text-3xl font-black text-gray-800 tracking-tight flex items-center gap-2">
-          Welcome back, {currentUser.nama_lengkap}! <span className="text-4xl animate-wave">👋</span>
+          Welcome back, {currentUser.nama_lengkap}!
         </h1>
         <p className="text-gray-500 mt-2 font-medium">
           Here is what's happening in your parking system today.
